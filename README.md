@@ -14,14 +14,15 @@
 
 ## Navigating 
 # giữa 2 activity
-''' kotlin
+``` kotlin
     val intent = Intent(this, Activity2::class.java)
     startActivity(intent)
-'''
+```
+
 
 # giữa 2 activity có sự truyền gửi dữ liệu
   - để gửi dữ liệu cần sử dụng startActivityForResult(). Kết quả được trả về thông qua onActivityResult, activity con dùng setResult để truyền dữ liệu cho act cha. Truyển dữ liệu bằng putExtra còn nhận bằng get...Extra
-''' kotlin
+``` kotlin
     // start Activity2 để lấy kq
     val intent = Intent(this, Activity2::class.java)
     startActivityForResult(intent, myRequestCode)
@@ -38,12 +39,12 @@
     intent.putExtra("URL",edText.text.toString())
     setResult(RESULT_OK, intent)
     finish()
-'''
+```
 
 # lưu giữ liệu
   - khi tương tác giữa các activity việc tái tạo lại activity -> mất thông tin. Lưu trữ giữ liệu bằng onSaveInstanceState để lưu data vào Bundle. Và phục hổi data bằng onSaveInstanceState() và dữ liệu đã lưu trong Bundle)
 
-''' kotlin
+``` kotlin
     override fun onSaveInstanceState(outState : Bundle){
         super.onSaveInstanceState(outState)
         outState.putString("URL",txView.text.toString())
@@ -54,7 +55,7 @@
         val data= savedInstanceState.getString("URL")
         txView.text=data
     }
-'''
+```
 
 # Intent 
   - là cái để yêu cầu hành động từ các ứng dụng khác
